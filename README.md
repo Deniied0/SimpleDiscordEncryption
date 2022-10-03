@@ -1,2 +1,2 @@
 # Discrypt
-Tencent Evasion
+Simple userscript for encrypted Discord messages.
