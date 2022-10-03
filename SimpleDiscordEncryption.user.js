@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Discrypt
+// @name         SimpleDiscordEncryption
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  Message encyption for Discord in browser.
@@ -19,7 +19,7 @@ var simpleCrypto = new SimpleCrypto("key")
 window.newMSG = function() {
     var msg = prompt("New message");
     var enc = simpleCrypto.encrypt(msg);
-    alert("DISCRYPT_ENC " + enc)
+    alert("SDE_ENC " + enc)
 }
 
 document.addEventListener('keydown', (event) => {
@@ -32,10 +32,10 @@ document.addEventListener('keydown', (event) => {
 function startLoop(){
     if(document.getElementsByClassName(messageContentClass).length !== 0){
         Array.from(document.getElementsByClassName(messageContentClass)).forEach(function(e){
-            if(e.textContent.startsWith("DISCRYPT_ENC ")) {
+            if(e.textContent.startsWith("SDE_ENC ")) {
                 try {
                     console.log(e.textContent)
-                    var encdata = e.textContent.substring(13);
+                    var encdata = e.textContent.substring(8);
                     e.textContent = simpleCrypto.decrypt(encdata);
                 } catch(err) {
                     e.textContent = "DISCRYPT ERROR: COULD NOT DECRYPT MESSAGE"
