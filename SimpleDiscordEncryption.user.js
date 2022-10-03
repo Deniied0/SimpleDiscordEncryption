@@ -36,9 +36,10 @@ function startLoop(){
                 try {
                     console.log(e.textContent)
                     var encdata = e.textContent.substring(8);
+                    console.log(encdata)
                     e.textContent = simpleCrypto.decrypt(encdata);
                 } catch(err) {
-                    e.textContent = "DISCRYPT ERROR: COULD NOT DECRYPT MESSAGE"
+                    e.textContent = "SDE ERROR: COULD NOT DECRYPT MESSAGE"
                 }
             }
         })
